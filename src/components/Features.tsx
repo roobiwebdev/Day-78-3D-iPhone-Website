@@ -25,7 +25,7 @@ const Features = () => {
     animateWithGsap(
       ".g_grow",
       { scale: 1, opacity: 1, ease: "power1" },
-      { scrub: 5.5 , yoyo: true, repeat: -1}
+      { scrub: 5.5, yoyo: true, repeat: -1 }
     );
     animateWithGsap(".g_text", {
       y: 0,
@@ -44,8 +44,8 @@ const Features = () => {
           </h1>
         </div>
 
-        <div className="flex flex-col justify-center items-center overflow-hidden">
-          <div className="mt-32 mb-24 pl-24">
+        <div className="w-full flex flex-col justify-center items-center overflow-hidden">
+          <div className=" w-full mt-32 mb-24 text-center sm:pl-24 ">
             <h2 className="text-5xl lg:text-7xl font-semibold">iPhone.</h2>
             <h2 className="text-5xl lg:text-7xl font-semibold">
               Forged in titanium.
@@ -59,7 +59,6 @@ const Features = () => {
                 id="exploreVideo"
                 className="w-full h-full object-cover object-center"
                 preload="none"
-                
                 muted
                 autoPlay
                 ref={videoRef}

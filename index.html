@@ -2,12 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/assets/images/apple.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/apple.svg" />
     <title>Apple IPhone</title>
   </head>
-  <body>
+  <body class="overflow-hidden relative">
+    <div class="absolute z-10 w-full h-screen bg-black loading-wrapper">
+      <div
+        class="z-10 h-screen w-full flex justify-center items-center fixed top-0"
+      >
+        <div class="loader"></div>
+      </div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script src="index.js"></script>
   </body>
 </html>
