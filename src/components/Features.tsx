@@ -13,9 +13,9 @@ const Features = () => {
         trigger: "#exploreVideo",
         toggleActions: "play pause reverse restart",
         start: "-10% bottom",
-        yoyo: true,
-        repeat: -1,
       },
+      yoyo: true,
+      repeat: -1,
       onComplete: () => {
         videoRef.current.play();
       },
@@ -25,8 +25,7 @@ const Features = () => {
     animateWithGsap(
       ".g_grow",
       { scale: 1, opacity: 1, ease: "power1" },
-      { scrub: 5.5 },
-      { yoyo: true, repeat: -1 }
+      { scrub: 5.5 , yoyo: true, repeat: -1}
     );
     animateWithGsap(".g_text", {
       y: 0,
@@ -38,7 +37,7 @@ const Features = () => {
 
   return (
     <section className="h-full common-padding bg-zinc relative overflow-hidden">
-      <div className="screen-max-wdith">
+      <div className="screen-max-width">
         <div className="mb-12 w-full">
           <h1 id="features_title" className="section-heading">
             Explore the full story.
@@ -60,7 +59,7 @@ const Features = () => {
                 id="exploreVideo"
                 className="w-full h-full object-cover object-center"
                 preload="none"
-                loop
+                
                 muted
                 autoPlay
                 ref={videoRef}
