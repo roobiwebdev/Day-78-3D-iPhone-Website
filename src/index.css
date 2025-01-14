@@ -148,6 +148,6 @@ canvas {
   }
 }
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   @apply hidden;
-} */
+}

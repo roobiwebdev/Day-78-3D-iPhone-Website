@@ -1,5 +1,4 @@
-import { Html } from '@react-three/drei'
-
+import { Html } from '@react-three/drei';
 
 const Loader = () => {
   return (
@@ -10,7 +9,7 @@ const Loader = () => {
         </div>
       </div>
     </Html>
-  )
+  );
 }
 
-export default Loader
+export default Loader;

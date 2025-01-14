@@ -3,7 +3,6 @@ import gsap from "gsap";
 import ModelView from "./ModelView";
 import { useEffect, useRef, useState } from "react";
 import { yellowImg } from "../utils";
-
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { View } from "@react-three/drei";
@@ -52,6 +51,8 @@ const Model = () => {
     gsap.to("#heading", { y: 0, opacity: 1 });
   }, []);
 
+  const rootRef = useRef<HTMLElement>(document.getElementById('root'));
+
   return (
     <section className="common-padding">
       <div className="screen-max-width">
@@ -82,7 +83,7 @@ const Model = () => {
             />
 
             <Canvas
-              className="w-full h-full "
+              className="w-full h-full"
               style={{
                 position: "fixed",
                 top: 0,
@@ -91,7 +92,7 @@ const Model = () => {
                 right: 0,
                 overflow: "hidden",
               }}
-              eventSource={document.getElementById("root")}
+              eventSource={rootRef.current || undefined}
             >
               <View.Port />
             </Canvas>
@@ -102,7 +103,7 @@ const Model = () => {
 
             <div className="flex-center">
               <ul className="color-container">
-                {models.map((item, i) => (
+                {models.map((item: any, i: number) => (
                   <li
                     key={i}
                     className="w-6 h-6 rounded-full mx-2 cursor-pointer"
@@ -113,7 +114,7 @@ const Model = () => {
               </ul>
 
               <button className="size-btn-container">
-                {sizes.map(({ label, value }) => (
+                {sizes.map(({ label, value }: { label: string; value: string }) => (
                   <span
                     key={label}
                     className="size-btn"

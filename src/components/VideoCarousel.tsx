@@ -8,8 +8,8 @@ import { hightlightsSlides } from "../constants";
 import { pauseImg, playImg, replayImg } from "../utils";
 
 const VideoCarousel = () => {
-  const videoRef = useRef([]);
-  const videoSpanRef = useRef([]);
+  const videoRef = useRef<(HTMLVideoElement | null)[]>([]);
+  const videoSpanRef = useRef<(HTMLSpanElement | null)[]>([]);
   const videoDivRef = useRef([]);
 
   // video and indicator
@@ -21,7 +21,7 @@ const VideoCarousel = () => {
     isPlaying: false,
   });
 
-  const [loadedData, setLoadedData] = useState([]);
+  const [loadedData, setLoadedData] = useState<any[]>([]);
   const { isEnd, isLastVideo, startPlay, videoId, isPlaying } = video;
 
   useGSAP(() => {
@@ -153,12 +153,14 @@ const VideoCarousel = () => {
     }
   };
 
-  const handleLoadedMetaData = (i, e) => setLoadedData((pre) => [...pre, e]);
+  const handleLoadedMetaData = (i: number, e: any) => setLoadedData((pre) => [...pre, e]);
+
 
   return (
     <>
       <div className="flex items-center">
-        {hightlightsSlides.map((list, i) => (
+      {hightlightsSlides.map((list: any, i: number) => (
+
           <div key={list.id} id="slider" className="sm:pr-20 pr-10">
             <div className="video-carousel_container">
               <div className="w-full h-full flex-center rounded-3xl overflow-hidden bg-black">
@@ -186,7 +188,8 @@ const VideoCarousel = () => {
               </div>
 
               <div className="absolute top-4 md:top-12 left-[5%] z-10">
-                {list.textLists.map((text, i) => (
+              {list.textLists.map((text: string, i: number) => (
+
                   <p key={i} className="md:text-2xl text-sm font-medium">
                     {text}
                   </p>

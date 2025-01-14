@@ -5,7 +5,7 @@ import { explore1Img, explore2Img, exploreVideo } from "../utils";
 import gsap from "gsap";
 
 const Features = () => {
-  const videoRef = useRef();
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useGSAP(() => {
     gsap.to("#exploreVideo", {
@@ -17,7 +17,7 @@ const Features = () => {
       yoyo: true,
       repeat: -1,
       onComplete: () => {
-        videoRef.current.play();
+        videoRef.current?.play();
       },
     });
 
