@@ -10,7 +10,7 @@ import { pauseImg, playImg, replayImg } from "../utils";
 const VideoCarousel = () => {
   const videoRef = useRef<(HTMLVideoElement | null)[]>([]);
   const videoSpanRef = useRef<(HTMLSpanElement | null)[]>([]);
-  const videoDivRef = useRef([]);
+  const videoDivRef = useRef<(HTMLDivElement | null)[]>([]);
 
   // video and indicator
   const [video, setVideo] = useState({
@@ -117,16 +117,18 @@ const VideoCarousel = () => {
 
   useEffect(() => {
     if (loadedData.length > 3) {
-      if (!isPlaying) {
+      if (videoRef.current[videoId]) {
         videoRef.current[videoId].pause();
-      } else {
-        startPlay && videoRef.current[videoId].play();
+      }
+
+      if (videoRef.current[videoId] && startPlay) {
+        videoRef.current[videoId].play();
       }
     }
   }, [startPlay, videoId, isPlaying, loadedData]);
 
   // vd id is the id for every video until id becomes number 3
-  const handleProcess = (type, i) => {
+  const handleProcess = (type: string, i: number) => {
     switch (type) {
       case "video-end":
         setVideo((pre) => ({ ...pre, isEnd: true, videoId: i + 1 }));
@@ -153,14 +155,13 @@ const VideoCarousel = () => {
     }
   };
 
-  const handleLoadedMetaData = (i: number, e: any) => setLoadedData((pre) => [...pre, e]);
-
+  const handleLoadedMetaData = (i: number, e: any) =>
+    setLoadedData((pre) => [...pre, e]);
 
   return (
     <>
       <div className="flex items-center">
-      {hightlightsSlides.map((list: any, i: number) => (
-
+        {hightlightsSlides.map((list: any, i: number) => (
           <div key={list.id} id="slider" className="sm:pr-20 pr-10">
             <div className="video-carousel_container">
               <div className="w-full h-full flex-center rounded-3xl overflow-hidden bg-black">
@@ -188,8 +189,7 @@ const VideoCarousel = () => {
               </div>
 
               <div className="absolute top-4 md:top-12 left-[5%] z-10">
-              {list.textLists.map((text: string, i: number) => (
-
+                {list.textLists.map((text: string, i: number) => (
                   <p key={i} className="md:text-2xl text-sm font-medium">
                     {text}
                   </p>
